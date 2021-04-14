@@ -128,6 +128,9 @@ public class codi {
 
         String[] arrayText = text.split(" ");
 
+        char[] caracters =  {'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s',
+                't','u','v','w','x','y','z','.',',','?','!',':'};
+
         int repeticions = 0;
 
         for (int i = 0; i < arrayText.length; i++) {
@@ -170,6 +173,30 @@ public class codi {
             }
         }
         return "La paraula " + paraula + " es repeteix " + repeticions + " vegades";
+    }
+    public static String numCaracter2(String text, char vocal){
+
+        String[] arrayText = text.split(" ");
+        String vocalAux = Character.toString(vocal).toLowerCase();
+        char vocalDefinitiva = vocalAux.charAt(0);
+
+        char[] caracters =  {'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s',
+                't','u','v','w','x','y','z','.',',','?','!',':'};
+
+        int repeticions = 0;
+
+        for (int i = 0; i < arrayText.length; i++) {
+
+            for (int j = 0; j < arrayText[i].length(); j++) {
+                String fraseMin = arrayText[i].toLowerCase();
+
+                if( fraseMin.charAt(j) == vocalDefinitiva){
+
+                    repeticions++;
+                }
+            }
+        }
+        return "El caracter " + vocal + " es repeteix " + repeticions + " vegades";
     }
 
 

@@ -82,7 +82,7 @@ public class Main {
                 }
             } catch (InputMismatchException e) {
 
-                System.err.println("Has de posar un número.");
+                System.err.println("Has de posar un número o un caracter, segons l'opció que hagis elegit.");
                 in.nextLine();
             }
         }while(!salir);
