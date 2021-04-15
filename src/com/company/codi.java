@@ -1,5 +1,6 @@
 package com.company;
 
+import java.util.ArrayList;
 import java.util.Locale;
 import java.util.Scanner;
 
@@ -16,19 +17,19 @@ public class codi {
     }
     public static String nLletres (String text){
 
-        String[] arrayText = text.split("[\\+|\\-|\\\\|\\*|\\=|\\.|\\_|\\?|\\¿|\\ ]");
+        String[] arrayText = Metodes.eliminarCaracters(text).split(" ");
 
         return "Hi ha " + Metodes.contadorCaracters(arrayText) + " lletres";
     }
     public static String nParaules (String text){
 
-        String[] arrayText = text.split("[-+*/=.,_?¿!{}()\\ ]");
+        String[] arrayText = Metodes.eliminarCaracters(text).split(" ");
 
         return "Hi ha " + Metodes.contadorParaules(arrayText) + " paraules";
     }
     public static void repeticionsCaracters (String text){
 
-         String fraseMin = text.toLowerCase();
+        String fraseMin = text.toLowerCase();
         String[] arrayText = fraseMin.split(" ");
 
         char[] caracters =  {'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s',
@@ -95,7 +96,7 @@ public class codi {
     }
     public static String paraulaINumRepeticions( String text){
 
-        String[] arrayText = text.split(" ");
+        String[] arrayText = Metodes.eliminarCaracters(text).split(" ");
 
         int [] repeticions = new int[arrayText.length];
 
@@ -161,43 +162,54 @@ public class codi {
     }
     public static String numParaula(String text, String paraula){
 
-        String[] arrayText = text.split(" ");
-
-        int repeticions = 0;
-
-        for (int i = 0; i < arrayText.length; i++) {
-
-            if(arrayText[i].equalsIgnoreCase(paraula)){
-
-                repeticions++;
-            }
-        }
-        return "La paraula " + paraula + " es repeteix " + repeticions + " vegades";
-    }
-    public static String numCaracter2(String text, char vocal){
-
-        String[] arrayText = text.split(" ");
-        String vocalAux = Character.toString(vocal).toLowerCase();
-        char vocalDefinitiva = vocalAux.charAt(0);
-
-        char[] caracters =  {'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s',
-                't','u','v','w','x','y','z','.',',','?','!',':'};
+        String[] arrayText = Metodes.eliminarCaracters(text).split(" ");
 
         int repeticions = 0;
 
         for (int i = 0; i < arrayText.length; i++) {
 
             for (int j = 0; j < arrayText[i].length(); j++) {
-                String fraseMin = arrayText[i].toLowerCase();
 
-                if( fraseMin.charAt(j) == vocalDefinitiva){
+                if (arrayText[i].equalsIgnoreCase(paraula)) {
 
                     repeticions++;
                 }
             }
         }
-        return "El caracter " + vocal + " es repeteix " + repeticions + " vegades";
+        if (repeticions > 0) {
+            return "La paraula " + paraula + " es repeteix " + repeticions + " vegades";
+        }else {
+            return "Això no es una paraula";
+        }
     }
+    public static String numCaracter2(String text, char vocal){
 
+        String[] arrayText = text.split(" ");
+        String vocalAux = Character.toString(vocal).toLowerCase();
+        char vocalDefinitiva = vocalAux.charAt(0);
+        int repeticions = 0;
 
+        char[] caracters =  {'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s',
+                't','u','v','w','x','y','z','.',',','?','!',':'};
+
+        for (int i = 0; i < caracters.length; i++) {
+
+            if(caracters[i] == vocalDefinitiva){
+
+                for (int x = 0; x < arrayText.length; x++) {
+
+                    for (int j = 0; j < arrayText[x].length(); j++) {
+                        String fraseMin = arrayText[x].toLowerCase();
+
+                        if( fraseMin.charAt(j) == vocalDefinitiva){
+
+                            repeticions++;
+                        }
+                    }
+                }
+                return "El caracter " + vocal + " es repeteix " + repeticions + " vegades";
+            }
+        }
+        return "Aquest caracter no es conte";
+    }
 }

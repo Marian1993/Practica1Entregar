@@ -1,5 +1,7 @@
 package com.company;
 
+import java.util.ArrayList;
+
 public class Metodes {
 
 
@@ -33,4 +35,35 @@ public class Metodes {
         }
         return numParaules;
     }
+    public static String eliminarCaracters(String text){
+
+        String mystring = text;
+        String[] arrayText = text.split(" ");
+        ArrayList<String> arrayAux = new ArrayList<String>();
+
+        mystring = mystring.replace("."," ");
+        mystring = mystring.replace(","," ");
+        mystring = mystring.replace("?"," ");
+        mystring = mystring.replace("-"," ");
+        mystring = mystring.replace("_"," ");
+        mystring = mystring.replace(":"," ");
+        mystring = mystring.replace(";"," ");
+
+        for (int i = 0; i < arrayText.length; i++) {
+
+            for (int j = 0; j < arrayText[i].length(); j++) {
+
+                if(mystring.charAt(i) == ' '){
+
+                }
+
+            }
+
+
+        }
+        return mystring;
+    }
+
+
+
 }

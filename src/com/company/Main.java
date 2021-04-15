@@ -64,7 +64,7 @@ public class Main {
                     case 8:
                         System.out.print("Introdueix un caracter: ");
                         char vocal = in.next().charAt(0);
-                        System.out.println(codi.numCaracter(text, vocal));
+                        System.out.println(codi.numCaracter2(text, vocal));
 
                         break;
                     case 9:
