@@ -1,6 +1,7 @@
 package com.company;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 public class Metodes {
 
@@ -35,35 +36,44 @@ public class Metodes {
         }
         return numParaules;
     }
-    public static String eliminarCaracters(String text){
+    public static String[] eliminarCaracters(String text){
 
+        int lletra = 0;
         String mystring = text;
-        String[] arrayText = text.split(" ");
         ArrayList<String> arrayAux = new ArrayList<String>();
-
-        mystring = mystring.replace("."," ");
-        mystring = mystring.replace(","," ");
-        mystring = mystring.replace("?"," ");
-        mystring = mystring.replace("-"," ");
-        mystring = mystring.replace("_"," ");
-        mystring = mystring.replace(":"," ");
-        mystring = mystring.replace(";"," ");
+        char[] vocals =  {'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s',
+                't','u','v','w','x','y','z'};
+         mystring = mystring.toLowerCase();
+        String[] arrayText = mystring.split(" ");
 
         for (int i = 0; i < arrayText.length; i++) {
 
             for (int j = 0; j < arrayText[i].length(); j++) {
 
-                if(mystring.charAt(i) == ' '){
+                for (int k = 0; k < vocals.length; k++) {
 
+                    if(arrayText[i].charAt(j) == vocals[k] && lletra == 0){
+
+                        arrayAux.add(arrayText[i]);
+                        lletra++;
+                    }
                 }
-
+                lletra = 0;
+                break;
             }
+        }
 
+        return omplirArray(arrayAux);
+    }
+    public static String[] omplirArray(ArrayList<String> array){
+
+        String[] newArray = new String[array.size()];
+
+        for (int i = 0; i < array.size(); i++) {
+
+            newArray[i] = array.get(i);
 
         }
-        return mystring;
+        return newArray;
     }
-
-
-
 }

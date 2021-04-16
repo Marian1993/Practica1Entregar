@@ -17,15 +17,17 @@ public class codi {
     }
     public static String nLletres (String text){
 
-        String[] arrayText = Metodes.eliminarCaracters(text).split(" ");
+        String array = text;
+        Metodes.eliminarCaracters(array);
 
-        return "Hi ha " + Metodes.contadorCaracters(arrayText) + " lletres";
+        return "Hi ha " + Metodes.contadorCaracters(Metodes.eliminarCaracters(array)) + " lletres";
     }
     public static String nParaules (String text){
 
-        String[] arrayText = Metodes.eliminarCaracters(text).split(" ");
+        String array = text;
+        Metodes.eliminarCaracters(array);
 
-        return "Hi ha " + Metodes.contadorParaules(arrayText) + " paraules";
+        return "Hi ha " + Metodes.contadorParaules(Metodes.eliminarCaracters(array)) + " paraules";
     }
     public static void repeticionsCaracters (String text){
 
@@ -96,7 +98,8 @@ public class codi {
     }
     public static String paraulaINumRepeticions( String text){
 
-        String[] arrayText = Metodes.eliminarCaracters(text).split(" ");
+        String myString = text;
+        String[] arrayText = Metodes.eliminarCaracters(myString);
 
         int [] repeticions = new int[arrayText.length];
 
@@ -121,7 +124,7 @@ public class codi {
         }
         if (repeticions[index] == 1){
 
-            return "No hi ha cap paraula repetida";
+            return "No hi ha cap paraula repetida més d'una vegada";
         }
         return "La paraula més repetida és: '" + arrayText[index] + "' amb " + repeticions[index] + " repeticions";
     }
@@ -162,7 +165,8 @@ public class codi {
     }
     public static String numParaula(String text, String paraula){
 
-        String[] arrayText = Metodes.eliminarCaracters(text).split(" ");
+        String myString = text;
+        String[] arrayText = Metodes.eliminarCaracters(myString);
 
         int repeticions = 0;
 
@@ -173,6 +177,7 @@ public class codi {
                 if (arrayText[i].equalsIgnoreCase(paraula)) {
 
                     repeticions++;
+                    break;
                 }
             }
         }
