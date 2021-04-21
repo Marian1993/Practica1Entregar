@@ -131,65 +131,6 @@ public class codi {
     public static String numCaracter(String text, char vocal){
 
         String[] arrayText = text.split(" ");
-
-        char[] caracters =  {'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s',
-                't','u','v','w','x','y','z','.',',','?','!',':'};
-
-        int repeticions = 0;
-
-        for (int i = 0; i < arrayText.length; i++) {
-
-            for (int j = 0; j < arrayText[i].length(); j++) {
-
-                if( arrayText[i].charAt(j) == vocal){
-
-                    repeticions++;
-                }
-            }
-        }
-        if(repeticions != 0){
-            return "El caracter " + vocal + " es repeteix " + repeticions + " vegades";
-        }
-        for (int i = 0; i < arrayText.length; i++) {
-
-            for (int j = 0; j < arrayText[i].length(); j++) {
-                String fraseMin = arrayText[i].toLowerCase();
-
-                if( fraseMin.charAt(j) == vocal){
-
-                    repeticions++;
-                }
-            }
-        }
-        return "El caracter " + vocal + " es repeteix " + repeticions + " vegades";
-    }
-    public static String numParaula(String text, String paraula){
-
-        String myString = text;
-        String[] arrayText = Metodes.eliminarCaracters(myString);
-
-        int repeticions = 0;
-
-        for (int i = 0; i < arrayText.length; i++) {
-
-            for (int j = 0; j < arrayText[i].length(); j++) {
-
-                if (arrayText[i].equalsIgnoreCase(paraula)) {
-
-                    repeticions++;
-                    break;
-                }
-            }
-        }
-        if (repeticions > 0) {
-            return "La paraula " + paraula + " es repeteix " + repeticions + " vegades";
-        }else {
-            return "Això no es una paraula";
-        }
-    }
-    public static String numCaracter2(String text, char vocal){
-
-        String[] arrayText = text.split(" ");
         String vocalAux = Character.toString(vocal).toLowerCase();
         char vocalDefinitiva = vocalAux.charAt(0);
         int repeticions = 0;
@@ -217,4 +158,30 @@ public class codi {
         }
         return "Aquest caracter no es conte";
     }
+
+    public static String numParaula(String text, String paraula){
+
+        String myString = text;
+        String[] arrayText = Metodes.eliminarCaracters(myString);
+
+        int repeticions = 0;
+
+        for (int i = 0; i < arrayText.length; i++) {
+
+            for (int j = 0; j < arrayText[i].length(); j++) {
+
+                if (arrayText[i].equalsIgnoreCase(paraula)) {
+
+                    repeticions++;
+                    break;
+                }
+            }
+        }
+        if (repeticions > 0) {
+            return "La paraula " + paraula + " es repeteix " + repeticions + " vegades";
+        }else {
+            return "Això no es una paraula";
+        }
+    }
+
 }
